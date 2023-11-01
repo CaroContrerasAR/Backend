@@ -70,27 +70,27 @@ class ProductManager{
 
 const productos = new ProductManager('./products.json')
 
-productos.addProduct({
-    title:'first product',
-    description:'description of product1',
-    price:150.30,
-    thumbnail:'ruta/image1.jpg',
-    code:'P123',
-    stock:50})
-productos.addProduct({
-    title:'second product',
-    description:'description of product2',
-    price:235.20,
-    thumbnail:'ruta/image2.jpg',
-    code:'P124',
-    stock:40})
-productos.addProduct({
-    title:'third product',
-    description:'description of product3',
-    price:250.80,
-    thumbnail: 'ruta/image3.jpg',
-    code:'P125',
-    stock:30})
+// productos.addProduct({
+//     title:'first product',
+//     description:'description of product1',
+//     price:150.30,
+//     thumbnail:'ruta/image1.jpg',
+//     code:'P123',
+//     stock:50})
+// productos.addProduct({
+//     title:'second product',
+//     description:'description of product2',
+//     price:235.20,
+//     thumbnail:'ruta/image2.jpg',
+//     code:'P124',
+//     stock:40})
+// productos.addProduct({
+//     title:'third product',
+//     description:'description of product3',
+//     price:250.80,
+//     thumbnail: 'ruta/image3.jpg',
+//     code:'P125',
+//     stock:30})
 //muestro los productos    
 productos.getProducts()
 
@@ -108,3 +108,5 @@ productos.getProducts()
 //     stock: 30,
 //     id: 3
 // })
+
+export default ProductManager
