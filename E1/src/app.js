@@ -33,7 +33,7 @@ app.get('/userparams/:uid', (req, res) => {
 app.get('/userquery', (req, res) => {
     res.send(users[req.query.uid])
 })
-
+//prueba
 
 app.listen(PORT,()=>{
     console.log(`Server online in Port ${PORT}`)
