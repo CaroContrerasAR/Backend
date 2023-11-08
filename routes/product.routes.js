@@ -9,7 +9,17 @@ router.get('/:pid', async(req,res)=>{
     res.send([req.params.pid])
 })
 
-router.post('/',)
+router.post('/', async (req, res) => {
+    try{
+        const productId = parseInt(req.params.pid)
+        const product = await ProductManager.addProduct(p)
+
+        return res.status(200).json(productInCart)
+
+    } catch(err){
+        return console.error(err)
+    }
+})
 
 router.put('/',)
 
