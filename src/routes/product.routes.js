@@ -5,28 +5,48 @@ const router = Router()
 const product = new ProductManager();
 
 router.get('/', async(req,res) => {
-    res.status(200).send(await product.getProducts())
+    try {
+        res.status(200).send(await product.getProducts())
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 router.get('/:pid', async(req,res) => {
-    const id = req.params.pid
-    res.status(200).send(await product.getProductsById(id))
+    try {
+        const id = req.params.pid
+        res.status(200).send(await product.getProductsById(id))
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 router.post("/", async(req,res) => {
-    const newProduct = req.body
-    res.status(200).send(await product.addProducts(newProduct))
+    try {
+        const newProduct = req.body
+        return res.status(200).send(await product.addProducts(newProduct))
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 router.put('/:pid', async(req,res) => {
-    const id = req.params.pid
-    const updateProduct = req.body
-    res.status(200).send(await product.updateProducts(id, updateProduct))
+    try {
+        const id = req.params.pid
+        const updateProduct = req.body
+        res.status(200).send(await product.updateProducts(id, updateProduct))
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 router.delete('/:pid', async(req,res) => {
-    const id = req.params.pid
-    res.status(200).send(await product.deleteProducts(id))
+    try {
+        const id = req.params.pid
+        res.status(200).send(await product.deleteProducts(id))
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 // router.get('/',)

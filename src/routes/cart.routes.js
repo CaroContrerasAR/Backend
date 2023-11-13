@@ -2,24 +2,39 @@ import { Router } from "express";
 import CartManager from '../controllers/CartManager.controller.js'
 
 const router = Router()
-const cart = new CartManager();
+const carts = new CartManager();
 
-router.post('/',)
-//id = q products
-//products= []
+router.post('/', async (req, res) => {
+    try{
+        res.status(200).send(await carts.addCarts() )                
+    } catch(err){
+        res.status(500).send({ err: err.message })
+    }
+})
 
-router.get('/:cid', async(req,res)=>{
-    //getCartById()
-    res.send([req.params.pid])
+router.get('/', async (req, res) => {
+    try {
+        res.status(200).send(await carts.readCarts())
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+        res.status(200).send( await carts.getCartsById(req.params.id))
+    } catch (error) {
+        res.status(500).send({ err: err.message })
+    }
 })
 
 router.post('/:cid/product/:pid', async (req, res) => {
     try{
-        const cartId = parseInt(req.params.cid)
-        const productId = parseInt(req.params.pid)
-        const productInCart = await CartManager.addProductInCart(cartId,productId)
-
-        return res.status(200).json(productInCart)
+        const cartId = req.params.cid  //parseInt(req.params.cid)
+        const productId = req.params.pid  //parseInt(req.params.pid)
+        res.send (await carts.addProductInCart(cartId,productId))
+        //const productInCart = await carts.addProductInCart(cartId,productId)
+        //return res.status(200).json(productInCart)
 
     } catch(err){
         return console.error(err)
@@ -39,9 +54,15 @@ router.post('/:cid/product/:pid', async (req, res) => {
 
 //  //        paso 3:  actualiza carrito en (updateCartById) 
 
+router.put('/:pid', async(req,res) => {
+    const id = req.params.pid
+    const updateCart = req.body
+    res.status(200).send(await product.updateCart(id, updateCart))
+})
 
+router.delete('/:pid', async(req,res) => {
+    const id = req.params.pid
+    res.status(200).send(await product.deleteCart(id))
+})
 
-
-router.put('/',)
-
-router.delete('/',)
+export default router
