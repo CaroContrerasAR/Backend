@@ -7,7 +7,7 @@ const carts = new CartManager();
 router.post('/', async (req, res) => {
     try{
         res.status(200).send(await carts.addCarts() )                
-    } catch(err){
+    } catch(error){
         res.status(500).send({ err: err.message })
     }
 })
@@ -36,8 +36,8 @@ router.post('/:cid/product/:pid', async (req, res) => {
         //const productInCart = await carts.addProductInCart(cartId,productId)
         //return res.status(200).json(productInCart)
 
-    } catch(err){
-        return console.error(err)
+    } catch (error) {
+        res.status(500).send({ err: err.message })
     }
 })
 

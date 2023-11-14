@@ -40,16 +40,25 @@ export class CartManager {
     };
 
     addProductInCart = async (cartId, productId) => {
-        const cartsById = await this.exist(cardId)
+        const cartsById = await this.exist(cartId)
         if(!cartsById) return 'Cart Not found'
         const productById = await productsAll.exist(productId)
         if(!cartsById) return 'Product Not found'
 
         const cartAll = await this.readCarts()
-        const cartFilter = cartAll.filter(prod => prod.id !== productId)
-        const cartsConcat = [{id: cartId, products: [{id: productById, quantity: 1}]}, ...cartFilter];
+        const cartFilter = cartAll.filter(cart => cart.id !== cartId)//prod?
+        
+        if(cartsById.products.some((prod) => prod.id === productId)){
+            const productInCart = cartsById.products.find((prod) => prod.id === productId);
+            productInCart.quantity++
+            const cartsConcat = [productInCart, ...cartFilter]
+            await this.writeCarts(cartsConcat)
+            return 'Addeed Product in Carts'
+        }
+
+        const cartsConcat = [{ id:cartId, products: [{ id: productById.id, quantity: 1}]}, ...cartFilter]
         await this.writeCarts(cartsConcat)
-        return 'Added Product in Carts'
+        return 'Product Added to Carts'
     }
 
 // updateCartById = async ({id, ...producto}) => {
