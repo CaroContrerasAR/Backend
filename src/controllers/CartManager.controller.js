@@ -46,36 +46,21 @@ export class CartManager {
         if(!cartsById) return 'Product Not found'
 
         const cartAll = await this.readCarts()
-        const cartFilter = cartAll.filter(cart => cart.id !== cartId)//prod?
+        const cartFilter = cartAll.filter(cart => cart.id != cartId)
         
         if(cartsById.products.some((prod) => prod.id === productId)){
-            const productInCart = cartsById.products.find((prod) => prod.id === productId);
-            productInCart.quantity++
-            const cartsConcat = [productInCart, ...cartFilter]
+            const moreProductInCart = cartsById.products.find((prod) => prod.id === productId);
+            moreProductInCart.quantity++
+            console.log(moreProductInCart.quantity)
+            const cartsConcat = [cartsById, ...cartFilter]
             await this.writeCarts(cartsConcat)
             return 'Addeed Product in Carts'
         }
+        cartsById.products.push({ id: productById.id, quantity: 1})
 
-        const cartsConcat = [{ id:cartId, products: [{ id: productById.id, quantity: 1}]}, ...cartFilter]
+        const cartsConcat = [cartsById, ...cartFilter]
         await this.writeCarts(cartsConcat)
         return 'Product Added to Carts'
     }
-
-// updateCartById = async ({id, ...producto}) => {
-//     await this.deleteCartById(id)
-//     let cartOld = await this.readCart()
-//     //console.log(productOld)
-//     let cartsModif = [{...producto, id}, ...productOld]
-//     await fs.writeFile(this.path,JSON.stringify(productsModif));
-// }
-// getCartById(cartId)
-// updateCartById(CartId, newContent)
-/* 
-    leer el contenido completo del archivo (fs.promises.readfle)
-    buscar el carrito por el campo id y sobreescribir al rarray products
-    grabar TODO el array actualizado a archivo
-    updateCartById usa findIndex(CartId) y reemplazan carts[index]=newContent
-*/
-
 }
 export default CartManager
