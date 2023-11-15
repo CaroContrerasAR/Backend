@@ -1,0 +1,13 @@
+[
+    {"title": "Product 1", "price":20000,"thumbnail":"ruta/imagen1.jpg","code":"P1","stock":50, "id": 1 },
+    {"title": "Product 2","price":5000,"thumbnail":"ruta/imagen2.jpg","code":"P2","stock":50, "id": 2 },
+    {"title": "Product 3", "price":10000,"thumbnail":"ruta/imagen3.jpg","code":"P3","stock":50, "id": 3 },
+    {"title": "Product 4", "price":45000,"thumbnail":"ruta/imagen4.jpg","code":"P4","stock":50, "id": 4 },
+    {"title": "Product 5", "price":12000,"thumbnail":"ruta/imagen5.jpg","code":"P5","stock":50, "id": 5 },
+    {"title": "Product 6", "price":2000,"thumbnail":"ruta/imagen6.jpg","code":"P6","stock":50, "id": 6 },
+    {"title": "Product 7", "price":124000,"thumbnail":"ruta/imagen7.jpg","code":"P7","stock":50, "id": 7 },
+    {"title": "Product 8", "price":65000,"thumbnail":"ruta/imagen8.jpg","code":"P8","stock":50, "id": 8 },
+    {"title": "Product 9", "price":56000,"thumbnail":"ruta/imagen9.jpg","code":"P9","stock":50, "id": 9 },
+    {"title": "Product 10","price":8000,"thumbnail":"ruta/imagen10.jpg","code":"P10","stock":50, "id": 10}
+]
+    
