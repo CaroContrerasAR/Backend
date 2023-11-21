@@ -9,27 +9,7 @@ export class ProductManager {
         this.products = [];
     }
 
-    // addProduct = async (product) => {
-    //     if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock) {
-    //         console.log('All fields are required');
-    //         return;
-    //     }
-    //     const existingProduct = this.products.find(existingProduct => existingProduct.code === product.code);
-    //     if (existingProduct) {
-    //         console.log(`Code ${product.code} exists`);
-    //         return;
-    //     }
-    //     const newProduct = {
-    //         ...product,
-    //         id: ProductManager.id
-    //     };
-    //     this.products.push(newProduct);
-    //     ProductManager.id++;
-    //     await fs.writeFile(this.path, JSON.stringify(this.products));
-    //     return newProduct;
-    // };
-
-    readProducts = async () => {
+        readProducts = async () => {
             let products = await fs.readFile(this.path, 'utf-8')
             return JSON.parse(products)
     };
