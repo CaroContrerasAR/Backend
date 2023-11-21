@@ -26,7 +26,7 @@ app.use('/', express.static(__dirname + '/public'))
 app.get('/', async (req, res) => {
     const allProducts = await product.getProducts()
     res.render('index',{
-        title:'Express Avanzado / Handlebars',
+        title:'Express Avanzado & Handlebars',
         products : allProducts
     })
 })
@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
 app.get('/:id', async (req, res) => {
     const prod = await product.getProductsById(req.params.id)
     res.render('prod',{
-        title:'Express Avanzado / Handlebars',
+        title:'Express Avanzado & Handlebars',
         products : prod
     })
 })

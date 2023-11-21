@@ -13,4 +13,14 @@ router.get('/', async(req,res) => {
     }
 })
 
+router.get('/realTimeProduct', async (req, res) => {
+    try{
+        res.status(200).render('realTimeProducts', {
+            title: 'Real time productos'
+        })
+    } catch(err){
+        res.status(500).send({ err: err.message })
+    }
+})
+
 export default router
