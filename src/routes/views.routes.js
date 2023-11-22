@@ -13,6 +13,16 @@ router.get('/', async(req,res) => {
     }
 })
 
+router.get('/chat', async(req,res) => {
+    try {
+        res.status(200).render('chat',{
+            title: 'Coder Compras Chat'
+        })
+    } catch (err) {
+        res.status(500).send({ err: err.message })
+    }
+})
+
 router.get('/realTimeProduct', async (req, res) => {
     try{
         res.status(200).render('realTimeProducts', {
