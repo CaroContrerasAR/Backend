@@ -28,6 +28,7 @@ app.set('view engine', 'handlebars')
 app.set('views', path.resolve(__dirname + '/views'))
 
 //app.set('socketServer', socketServer)
+
 //Static
 app.use('/', express.static(__dirname + '/public'))
 
@@ -52,13 +53,13 @@ app.get('/', async (req, res) => {
     })
 })
 
-app.get('/:id', async (req, res) => {
-    const prod = await product.getProductsById(req.params.id)
-    res.render('prod',{
-        title:'Express & Handlebars by ID',
-        products : prod
-    })
-})
+// app.get('/:id', async (req, res) => {
+//     const prod = await product.getProductsById(req.params.id)
+//     res.render('prod',{
+//         title:'Express & Handlebars by ID',
+//         products : prod
+//     })
+// })
 app.use('/api/products', productRouter)
 app.use('/api/cart', cartRouter)
 

@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>Products By IDs</h1>
+    <h1>Products List</h1>
 
     <table class="table">
   <thead>
@@ -17,18 +17,22 @@
     </tr>
   </thead>
   <tbody>
+            {{#each products}}
         <tr>
-            <td>{{products.id}}</td>
-            <td>{{products.title}}</td>
-            <td>{{products.description}}</td>
-            <td>{{products.price}}</td>
-            <td>{{products.status}}</td>
-            <td>{{products.category}}</td>
-            <td>{{products.code}}</td>
-            <td>{{products.stock}}</td>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{price}}</td>
+            <td>{{status}}</td>
+            <td>{{category}}</td>
+            <td>{{code}}</td>
+            <td>{{stock}}</td>
             {{#thumbnail}}
-                <td> <img style="width: 40px; height: 40px;" src={{products}}>  </td>
+                <td> <img style="width: 40px; height: 40px;" src={{this}}>  </td>
             {{/thumbnail}}
         </tr>
+            {{/each}}
   </tbody>
 </table>
+
+<script src="/js/index.js"></script>
