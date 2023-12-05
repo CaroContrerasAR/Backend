@@ -1,9 +1,7 @@
-alert('holisss')
-
 const socket = io()
 const tabla = document.getElementById('tabla');
-// const btnCreateProduct = document.getElementById('btnCreateP');
-// const btnDelete = document.getElementById('btnDelete')
+//const btnCreateProduct = document.getElementById('btnCreateP');
+const btnDelete = document.getElementById('btnDelete')
 
 socket.on('connect', ()=>{
     console.log('cliente conectado')
@@ -29,7 +27,7 @@ socket.on('products', (data)=>{
                 <img style="height: 18px;" src="${e.thumbnail}" >
               </td>
               <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="deleteProduct(${e.id})" >Eliminar</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deleteProduct(${e.id})" >Delete</button>
               </td>
             </tr>
         

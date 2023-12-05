@@ -7,16 +7,10 @@ const product = new ProductManager();
 
 router.get('/', async(req,res) => {
     try {
-        res.status(200).send(await product.getProducts())
-    } catch (err) {
-        res.status(500).send({ err: err.message })
-    }
-})
-
-router.get('/chat', async(req,res) => {
-    try {
-        res.status(200).render('chat',{
-            title: 'Coder Compras Chat'
+        const allProducts = await product.getProducts()
+        res.status(200).render('home',{
+                    title:'Home',
+                    products : allProducts
         })
     } catch (err) {
         res.status(500).send({ err: err.message })

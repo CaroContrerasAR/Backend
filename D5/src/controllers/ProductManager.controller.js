@@ -38,7 +38,7 @@ export class ProductManager {
         product.id = nanoid()
         let productAll = [...productsOld, product]
         await this.writeProducts(productAll)
-        return "Producto Agregado"
+        return "Added Product"
     };
 
     getProducts = async () =>{
