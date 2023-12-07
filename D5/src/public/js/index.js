@@ -1,22 +1,18 @@
 const socket = io()
 const tabla = document.getElementById('tabla');
 //const btnCreateProduct = document.getElementById('btnCreateP');
-const btnDelete = document.getElementById('btnDelete')
+//const btnDelete = document.getElementById('btnDelete')
 
 socket.on('connect', ()=>{
-    console.log('cliente conectado')
-
+    console.log('Connected Customer')
 })
 
 socket.on('products', (data)=>{
     // console.log(data)
-
     let conjunto = ''
-    
-    data.map((e)=> {
+     data.map((e)=> {
         conjunto += 
-        
-        `
+         `
             <tr>
               <th scope="row">${e.id}</th>
               <td>${e.title}</td>
@@ -30,19 +26,15 @@ socket.on('products', (data)=>{
                 <button type="button" class="btn btn-danger btn-sm" onclick="deleteProduct(${e.id})" >Delete</button>
               </td>
             </tr>
-        
-        `
-
+         `
         tabla.innerHTML = conjunto
     })
 })
 
 const deleteProduct = async (id) =>{
-
-    fetch(`http://localhost:8080/api/product/${id}`, {
+    fetch(`http://localhost:8080/api/products/${id}`, {
         method: 'DELETE',
     })
     .then(res => res.json())
     .then(res => console.log(res))
-
 }
